@@ -7,7 +7,7 @@ const scopes = [
     "https://www.googleapis.com/auth/cloud-platform",
 ];
 
-const serviceAccount = core.getInput('serviceAccount');
+const serviceAccount = JSON.parse(core.getInput('serviceAccount'));
 const projectNumber = core.getInput('projectNumber');
 const appId = core.getInput('appId');
 
@@ -18,7 +18,7 @@ try {
     // Use the JWT client to generate an access token.
     jwtClient.authorize(function (error, tokens) {
         if (error) {
-            return core.setFailed(error.message);
+            return core.setFailed(`Authentication failed: ${error.message}`);
         } else if (tokens.access_token === null) {
             core.setFailed('Provided service account does not have permission to generate access tokens');
         } else {
@@ -33,9 +33,9 @@ try {
 
 function googleJwtClient() {
     return new google.auth.JWT(
-        serviceAccount.client_email,
+        serviceAccount['client_email'],
         null,
-        serviceAccount.private_key,
+        serviceAccount['private_key'],
         scopes
     );
 }
