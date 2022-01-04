@@ -1,4 +1,4 @@
-# Firebase latest app version
+# Firebase Increment App Version
 Github action to retrieve the latest app version from a firebase app distribution project.
 
 ## Example usage
