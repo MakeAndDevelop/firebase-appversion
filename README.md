@@ -36,7 +36,10 @@ jobs:
 ## Inputs
 
 ### serviceAccount : string
-Service account json string **!Make sure to include this as github secret!**
+Service account json string 
+
+**!Make sure to include this as github secret!**
+
 See: `https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/serviceaccounts/adminsdk` to create one. The json string should at least look like this:
 
 ```json
@@ -53,12 +56,16 @@ Make sure the service account has the following roles:
 These roles can be set from: `https://console.cloud.google.com/iam-admin/iam?project={YOUR_PROJECT_NAME}` 
 
 ### projectNumber : string
+
 ***Preferably include this as github secret***
+
 The project number of the firebase app distribution project where your app is located
 THis can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
 
 ### appId : string
+
 ***Preferably include this as github secret***
+
 The id of the firebase app distribution you want to retrieve the latest version from.
 THis can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
 
