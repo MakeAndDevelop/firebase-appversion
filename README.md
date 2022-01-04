@@ -38,7 +38,7 @@ jobs:
 ### serviceAccount : string
 Service account json string 
 
-**!Make sure to include this as github secret!**
+**!-- Make sure to include this as github secret --!**
 
 See: `https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/serviceaccounts/adminsdk` to create one. The json string should at least look like this:
 
