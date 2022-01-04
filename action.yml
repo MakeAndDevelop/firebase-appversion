@@ -1,13 +1,13 @@
-name: 'Firebase app version'
+name: 'Firebase Latest App Version'
 description: 'Github action to retrieves the latest app version from firebase so it can be used to auto increment'
 inputs:
-  app-id:
+  appId:
     description: 'App id can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general'
     required: true
-  project-number:
+  projectNumber:
     description: 'Project number can be found on https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general'
     required: true
-  service-account:
+  serviceAccount:
     description: 'Service account json string - see https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/serviceaccounts/adminsdk'
     required: true
 outputs:
@@ -17,6 +17,12 @@ outputs:
     description: 'The latest app build number (eg: 10)'
   flutterVersionString: 
     description: 'The latest app version + build number (eg: 1.0.0+10)'
+  newDisplayVersion: 
+    description: 'The latest app version string (eg: 1.0.1)'
+  newBuildVersion: 
+    description: 'The latest app build number (eg: 11)'
+  newFlutterVersionString: 
+    description: 'The latest app version + build number (eg: 1.0.1+11)'
 runs:
   using: 'node12'
   main: 'index.js'

@@ -1,6 +1,6 @@
 {
   "name": "firebase-latest-app-version",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Github action to retrieve the latest firebase app version from a app distribution project",
   "main": "index.js",
   "scripts": {

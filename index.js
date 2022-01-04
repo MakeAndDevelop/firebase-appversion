@@ -7,9 +7,9 @@ const scopes = [
     "https://www.googleapis.com/auth/cloud-platform",
 ];
 
-const serviceAccount = core.getInput('service-account');
-const projectNumber = core.getInput('project-number');
-const appId = core.getInput('app-id');
+const serviceAccount = core.getInput('serviceAccount');
+const projectNumber = core.getInput('projectNumber');
+const appId = core.getInput('appId');
 
 try {
     // Authenticate a JWT client with the service account.
@@ -22,6 +22,7 @@ try {
         } else if (tokens.access_token === null) {
             core.setFailed('Provided service account does not have permission to generate access tokens');
         } else {
+            // Get latest release and parse it's version to the current and new version
             getLatestRelease(tokens.access_token);
         }
     });
@@ -55,13 +56,33 @@ function getLatestRelease(accessToken) {
         };
 
         if (!error && res.statusCode == 200) {
-            const json = JSON.parse(body);
-            const displayVersion = json['releases'][0]['displayVersion'];
-            const buildVersion = json['releases'][0]['buildVersion'];
-
-            core.setOutput('displayVersion', displayVersion);
-            core.setOutput('buildVersion', buildVersion);
-            core.setOutput('flutterVersionString', `${displayVersion}+${buildVersion}`);
+            setVersionOutput(body);
         };
     });
+}
+
+function setVersionOutput(body) {
+    const json = JSON.parse(body);
+    const displayVersion = json['releases'][0]['displayVersion'];
+    const buildVersion = json['releases'][0]['buildVersion'];
+
+    console.log(`Current version: ${displayVersion}+${buildVersion}`);
+
+    core.setOutput('displayVersion', displayVersion);
+    core.setOutput('buildVersion', buildVersion);
+    core.setOutput('flutterVersionString', `${displayVersion}+${buildVersion}`);
+
+    const newDisplayVersion = incrementVersion(displayVersion);
+    const newBuildVersion = parseInt(buildVersion) + 1;
+    console.log(`New version: ${newDisplayVersion}+${newBuildVersion}`);
+
+    core.setOutput('newDisplayVersion', newDisplayVersion);
+    core.setOutput('newBuildVersion', newBuildVersion);
+    core.setOutput('newFlutterVersionString', `${newDisplayVersion}+${newBuildVersion}`);
+}
+
+function incrementVersion(displayVersion) {
+    const versionComponents = displayVersion.split('.');
+    const newRevision = parseInt(versionComponents[2]) + 1;
+    return `${versionComponents[0]}.${versionComponents[1]}.${newRevision}`;
 }
