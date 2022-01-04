@@ -16,13 +16,18 @@ jobs:
     steps:
     
     # Your Preparation steps
-
     - name: Get app version
+    - name: Get latest app version
+      id: version
       uses: MakeAndDevelop/firebase-latest-app-version@v1
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
         projectNumber: ${{secrets.FIREBASE_PROJECT_NUMBER}}
         serviceAccount: ${{secrets.FIREBASE_SERVICE_ACCOUNT}}
+
+    # For flutter use:
+    - name: Update version in YAML
+      run: sed -i 's/99.99.99+99/${{ steps.version.outputs.newFlutterVersion }}/g' pubspec.yaml
 
      # Your Build and Distribution steps steps
      # eg: wzieba/Firebase-Distribution-Github-Action@v1
