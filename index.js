@@ -51,7 +51,7 @@ function getLatestRelease(accessToken) {
 
     request(options, (error, res, body) => {
         if (error) {
-            return core.setFailed(error.message);
+            return core.setFailed(`Something went wrong, make sure your service account has the "Firebase App Distribution Admin" role. ${error.message}`);
         };
 
         if (!error && res.statusCode == 200) {
