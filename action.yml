@@ -23,6 +23,9 @@ outputs:
     description: 'The latest app build number (eg: 11)'
   newFlutterVersionString: 
     description: 'The latest app version + build number (eg: 1.0.1+11)'
+branding:
+  color: 'yellow'
+  icon: 'arrow-up'
 runs:
   using: 'node12'
   main: 'index.js'
