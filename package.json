@@ -1,0 +1,26 @@
+{
+  "name": "firebase-latest-app-version",
+  "version": "0.1.0",
+  "description": "Github action to retrieve the latest firebase app version from a app distribution project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MakeAndDevelop/firebase-appversion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MakeAndDevelop/firebase-appversion/issues"
+  },
+  "homepage": "https://github.com/MakeAndDevelop/firebase-appversion#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "googleapis": "^92.0.0",
+    "request": "^2.88.2"
+  }
+}
