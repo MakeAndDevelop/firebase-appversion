@@ -27,7 +27,7 @@ jobs:
 
     # For flutter use:
     - name: Update version in YAML
-      run: sed -i 's/99.99.99+99/${{ steps.version.outputs.newFlutterVersion }}/g' pubspec.yaml
+      run: sed -i 's/99.99.99+99/${{ steps.version.outputs.newFlutterVersionString }}/g' pubspec.yaml
 
      # Your Build and Distribution steps steps
      # eg: wzieba/Firebase-Distribution-Github-Action@v1
