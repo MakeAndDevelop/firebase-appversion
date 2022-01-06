@@ -30,6 +30,7 @@ jobs:
     - name: Update version in YAML
       run: | 
         sed -i 's/version: [0-9]*\.[0-9]*\.[0-9]*+[0-9]*/version: ${{ steps.version.outputs.newFlutterVersionString }}/' pubspec.yaml
+        # On mac agent: sed -i '' 's/version: [0-9]*\.[0-9]*\.[0-9]*+[0-9]*/version: ${{ steps.version.outputs.newFlutterVersionString }}/' pubspec.yaml
 
      # Your Build and Distribution steps steps
      # eg: wzieba/Firebase-Distribution-Github-Action@v1
