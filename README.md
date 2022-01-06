@@ -1,5 +1,6 @@
 # Firebase Increment App Version
 Github action to retrieve the latest app version from a firebase app distribution project.
+_Only tested with Android App Distributions_
 
 ## Example usage
 
@@ -25,9 +26,10 @@ jobs:
         projectNumber: ${{secrets.FIREBASE_PROJECT_NUMBER}}
         serviceAccount: ${{secrets.FIREBASE_SERVICE_ACCOUNT}}
 
-    # For flutter use:
+    # For flutter use below to increment version:
     - name: Update version in YAML
-      run: sed -i 's/99.99.99+99/${{ steps.version.outputs.newFlutterVersionString }}/g' pubspec.yaml
+      run: | 
+        sed -i 's/version: [0-9]*\.[0-9]*\.[0-9]*+[0-9]*/version: ${{ steps.version.outputs.newFlutterVersionString }}/' pubspec.yaml
 
      # Your Build and Distribution steps steps
      # eg: wzieba/Firebase-Distribution-Github-Action@v1
@@ -79,3 +81,12 @@ The latest app build number (eg: 10)
   
 ### flutterVersionString : string
 The latest app version + build number (eg: 1.0.0+10)
+
+### newDisplayVersion : string
+The latest app version string (eg: 1.0.1)
+  
+### newBuildVersion : string
+The latest app build number (eg: 11)
+  
+### newFlutterVersionString : string
+The latest app version + build number (eg: 1.0.1+11)
