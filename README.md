@@ -64,14 +64,14 @@ These roles can be set from: `https://console.cloud.google.com/iam-admin/iam?pro
 ***Preferably include this as github secret***
 
 The project number of the firebase app distribution project where your app is located
-THis can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
+This can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
 
 ### appId : string
 
 ***Preferably include this as github secret***
 
 The id of the firebase app distribution you want to retrieve the latest version from.
-THis can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
+This can be found on the https://console.firebase.google.com/project/{YOUR_PROJECT_NAME}/settings/general
 
 ## Outputs
 
