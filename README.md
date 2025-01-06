@@ -20,7 +20,7 @@ jobs:
     - name: Get app version
     - name: Get latest app version
       id: version
-      uses: MakeAndDevelop/firebase-appversion@v1
+      uses: MakeAndDevelop/firebase-appversion@v2
       with:
         appId: ${{secrets.FIREBASE_APP_ID}}
         projectNumber: ${{secrets.FIREBASE_PROJECT_NUMBER}}
